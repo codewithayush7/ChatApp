@@ -64,10 +64,13 @@ export const useChatStore=create((set, get) => ({
    });
   },
 
-  unsubscribeFromMessages:()=>{
-    const socket = useAuthStore.getState().socket;
+  unsubscribeFromMessages: () => {
+  const socket = useAuthStore.getState().socket;
+  if (socket) {
     socket.off("newMessage");
-  },
+  }
+},
+
 
     setSelectedUser: (selectedUser) => set({ selectedUser }),
 
